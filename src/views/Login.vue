@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import md5 from "blueimp-md5";
-import { mapActions, mapMutations } from "vuex";
+// import md5 from "blueimp-md5";
+// import { mapActions, mapMutations } from "vuex";
 
 export default {
   name: "Login",
@@ -17,7 +17,7 @@ export default {
     password: "",
   }),
 
-  methods: {
+  /*  methods: {
     ...mapActions(["Account"]),
     ...mapMutations(["Notify"]),
     account() {
@@ -34,6 +34,6 @@ export default {
         password: md5(this.password),
       });
     },
-  },
+  }, */
 };
 </script>

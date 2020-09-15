@@ -23,8 +23,3 @@ export default {
 };
 </script>
 
-<style lang="less">
-#app {
-  background-color: #f6f6f6;
-}
-</style>
