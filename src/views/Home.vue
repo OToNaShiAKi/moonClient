@@ -3,9 +3,9 @@
     <h2 class="mb-3">科协招新活动</h2>
     <v-bottom-sheet v-model="sheet" inset>
       <template v-slot:activator="{ on, attrs }">
-        <v-btn outlined v-bind="attrs" v-on="on">活动列表</v-btn>
+        <v-btn light outlined v-bind="attrs" v-on="on">活动列表</v-btn>
       </template>
-      <v-list>
+      <v-list light>
         <v-subheader>科协招新活动列表</v-subheader>
         <v-list-item :to="tile.path" v-for="tile in tiles" :key="tile.icon">
           <v-list-item-icon>
@@ -39,8 +39,6 @@
 </template>
 
 <script>
-// import { mapMutations } from "vuex";
-
 export default {
   name: "Home",
   data: () => ({
@@ -68,14 +66,6 @@ export default {
     sheet: false,
     overlay: false,
   }),
-  /* methods: {
-    ...mapMutations(["Account"]),
-    logout() {
-      this.Account({});
-      window.localStorage.clear();
-      this.$router.replace("/login");
-    },
-  }, */
 };
 </script>
 
@@ -84,7 +74,8 @@ export default {
   color: #454545;
   min-height: 100vh;
   position: relative;
-  background: url("../assets/back.jpg") center bottom/contain no-repeat fixed;
+  background: #fff url("../assets/back.jpg") center bottom/contain no-repeat
+    fixed;
 }
 .bottom {
   position: absolute;

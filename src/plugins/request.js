@@ -4,7 +4,7 @@ import store from "./../store/";
 axios.defaults.baseURL =
   process.env.NODE_ENV === "development"
     ? "/moon/"
-    : "http://hustmaths.top:9090/";
+    : "http://hustmaths.top:8909/";
 
 axios.defaults.withCredentials = true;
 
@@ -15,10 +15,7 @@ axios.interceptors.request.use(
   },
   (error) => {
     console.log(error);
-    store.commit("Notify", {
-      type: "error",
-      message: error.message,
-    });
+    store.commit("Notify", { type: "error", message: error.message });
   }
 );
 
@@ -39,10 +36,7 @@ axios.interceptors.response.use(
   (error) => {
     console.log(error);
     store.commit("Progress", false);
-    store.commit("Notify", {
-      type: "error",
-      message: error.message,
-    });
+    store.commit("Notify", { type: "error", message: error.message });
   }
 );
 

@@ -4,11 +4,11 @@ import Home from "../views/Home.vue";
 import Main from "../views/Main/Main.vue";
 import Picture from "../views/Main/children/Picture.vue";
 
-/* import store from "../store/";
-import { getItem } from "../plugins/storage"; */
+import store from "../store/";
 
 const Login = () => import("../views/Login.vue");
 const Me = () => import("../views/Main/children/Me.vue");
+const Upload = () => import("../views/Upload.vue");
 
 Vue.use(VueRouter);
 
@@ -22,6 +22,11 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
+  },
+  {
+    path: "/upload",
+    name: "Upload",
+    component: Upload,
   },
   {
     path: "/main",
@@ -50,13 +55,13 @@ const router = new VueRouter({
   routes,
 });
 
-/* router.beforeEach((to, from, next) => {
+const Intercept = ["Me", "Upload"];
+
+router.beforeEach((to, from, next) => {
+  console.log(to);
   const user = store.state.user;
-  if (!to.fullPath.includes("login") && !user._id) {
-    const info = getItem("user");
-    if (info) store.dispatch("Account", info);
-    else next("/login");
-  } else next();
-}); */
+  if (user.id || !Intercept.includes(to.name)) next();
+  else next("/login");
+});
 
 export default router;

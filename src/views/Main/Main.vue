@@ -4,24 +4,23 @@
     <v-bottom-navigation
       fixed
       v-model="nav"
-      dark
       hide-on-scroll
       grow
-      background-color="#2c2c2c"
-      color="#ecc02c"
+      background-color="accent"
+      color="primary"
     >
-      <v-btn to="home" value="home">
-        <span>Home</span>
-        <v-icon>mdi-home-outline</v-icon>
+      <v-btn to="/main/home" value="home">
+        <span>照片墙</span>
+        <v-icon>mdi-image-outline</v-icon>
       </v-btn>
 
-      <v-btn to="favour" value="favorites">
-        <span>Upload</span>
+      <v-btn to="/upload" value="upload">
+        <span>发布</span>
         <v-icon>mdi-cloud-upload-outline</v-icon>
       </v-btn>
 
-      <v-btn to="me" value="me">
-        <span>Me</span>
+      <v-btn to="/main/me" value="me">
+        <span>我的</span>
         <v-icon>mdi-face-outline</v-icon>
       </v-btn>
     </v-bottom-navigation>
@@ -29,8 +28,6 @@
 </template>
 
 <script>
-// import { mapMutations } from "vuex";
-
 export default {
   name: "Main",
   data: () => ({

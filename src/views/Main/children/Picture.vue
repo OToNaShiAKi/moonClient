@@ -1,10 +1,10 @@
 <template>
-  <div class="pb-16">
+  <div class="pb-12 px-3">
     <v-img src="@/assets/logo.png" class="mx-16" />
     <v-container fluid>
-      <v-row dense>
+      <v-row>
         <v-col v-for="card in cards" :key="card.title">
-          <v-card>
+          <v-card color="accent" flat>
             <v-img
               :src="card.src"
               class="white--text align-end"
@@ -16,12 +16,12 @@
 
             <v-card-actions>
               <v-spacer />
-              <v-btn text>
+              <v-btn color="primary" text>
                 <span class="mr-1">123</span>
                 <v-icon>mdi-heart-outline</v-icon>
               </v-btn>
 
-              <v-btn text>
+              <v-btn color="primary" text>
                 <span class="mr-1">123</span>
                 <v-icon>mdi-comment-outline</v-icon>
               </v-btn>
@@ -34,8 +34,6 @@
 </template>
 
 <script>
-// import { mapMutations } from "vuex";
-
 export default {
   name: "Picture",
   data: () => ({

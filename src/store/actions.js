@@ -7,10 +7,10 @@ const Account = async ({ commit }, info) => {
     const result = await request.post("/user/account", info);
     setItem("user", info);
     commit("Account", result.data);
-    router.replace("/");
+    router.replace("/main/home");
   } catch (error) {
     console.log(error);
-    router.replace("/login");
+    if (router.history.current.name === "Login") router.replace("/login");
   }
 };
 
