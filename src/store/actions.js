@@ -23,6 +23,17 @@ const Info = async ({ commit }, info) => {
   }
 };
 
+const Upload = async ({ commit }, files) => {
+  const config = { headers: { "Content-Type": "multipart/form-data" } };
+  try {
+    const result = await request.post("/picture/upload", files, config);
+    commit("Upload", result.data);
+    router.replace("/main/work");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const GameRank = async () => {
   try {
     const result = await request.get("/user/rank");
@@ -35,4 +46,5 @@ export const GameRank = async () => {
 export default {
   Account,
   Info,
+  Upload,
 };

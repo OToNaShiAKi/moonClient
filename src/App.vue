@@ -13,13 +13,22 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
+import { getItem } from "./plugins/storage";
 
 export default {
   name: "App",
   computed: {
     ...mapState(["notify", "progress"]),
   },
+  created() {
+    let user = this.$store.state.user;
+    if (!user.id) {
+      user = getItem("user");
+      if (user.nick && user.password) this.Account(user);
+    }
+  },
+  methods: { ...mapActions(["Account"]) },
 };
 </script>
 

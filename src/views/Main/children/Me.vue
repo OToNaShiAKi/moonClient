@@ -20,7 +20,7 @@
     </v-list-item>
 
     <v-list-item-group>
-      <v-list-item v-for="(item, i) in items" :key="i">
+      <v-list-item v-for="item in items" :key="item.path" :to="item.path">
         <v-list-item-icon>
           <v-icon color="primary">{{ item.icon }}</v-icon>
         </v-list-item-icon>
@@ -49,17 +49,17 @@ export default {
       {
         icon: "mdi-account",
         text: "实名认证",
-        path: "/real",
+        path: "/main/real",
       },
       {
         icon: "mdi-heart",
         text: "我的喜欢",
-        path: "/favour",
+        path: "/main/like",
       },
       {
         icon: "mdi-near-me",
         text: "我的作品",
-        path: "/works",
+        path: "/main/work",
       },
       {
         icon: "mdi-home",

@@ -1,6 +1,8 @@
 <template>
   <div id="main" class="pt-3">
-    <router-view />
+    <keep-alive>
+      <router-view />
+    </keep-alive>
     <v-bottom-navigation
       fixed
       v-model="nav"
@@ -14,7 +16,7 @@
         <v-icon>mdi-image-outline</v-icon>
       </v-btn>
 
-      <v-btn to="/upload" value="upload">
+      <v-btn to="/main/upload" value="upload">
         <span>发布</span>
         <v-icon>mdi-cloud-upload-outline</v-icon>
       </v-btn>

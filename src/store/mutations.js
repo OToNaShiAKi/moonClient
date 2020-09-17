@@ -20,9 +20,15 @@ const Progress = (state, show) => {
   state.progress = show;
 };
 
+const Upload = (state, files) => {
+  state.files = files;
+  console.log(files);
+};
+
 export default {
   Account,
   Notify,
   Progress,
   Info,
+  Upload,
 };
