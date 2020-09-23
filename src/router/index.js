@@ -5,11 +5,15 @@ import Main from "../views/Main/Main.vue";
 import Picture from "../views/Main/children/Picture.vue";
 
 import store from "../store/";
+import { getItem } from "./../plugins/storage";
 
 const Login = () => import("../views/Login.vue");
 const Me = () => import("../views/Main/children/Me.vue");
 const Upload = () => import("../views/Main/children/Upload.vue");
 const Work = () => import("../views/Main/children/Work.vue");
+const Info = () => import("../views/Main/children/Info.vue");
+const Detail = () => import("../views/Main/Detail.vue");
+const Rank = () => import("../views/Main/Rank.vue");
 
 Vue.use(VueRouter);
 
@@ -50,7 +54,27 @@ const routes = [
         name: "Work",
         component: Work,
       },
+      {
+        path: "like",
+        name: "Like",
+        component: Work,
+      },
+      {
+        path: "info",
+        name: "Info",
+        component: Info,
+      },
     ],
+  },
+  {
+    path: "/rank",
+    name: "Rank",
+    component: Rank,
+  },
+  {
+    path: "/detail",
+    name: "Detail",
+    component: Detail,
   },
   {
     path: "*",
@@ -64,8 +88,16 @@ const router = new VueRouter({
 
 const Intercept = ["Me", "Upload"];
 
-router.beforeEach((to, from, next) => {
-  const user = store.state.user;
+router.beforeEach(async (to, from, next) => {
+  let user = store.state.user;
+  if (!user.id) {
+    user = getItem("user");
+    if (user.nick && user.password) {
+      await store.dispatch("Account", user);
+      next();
+      return;
+    }
+  }
   if (user.id || !Intercept.includes(to.name)) next();
   else next("/login");
 });

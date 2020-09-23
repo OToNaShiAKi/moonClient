@@ -5,9 +5,11 @@
       name="file"
       prepend-icon="mdi-camera"
       multiple
-      label="可以先用PS修修图哦"
+      persistent-hint
+      hint="可以先用PS修修图哦"
+      label="选择图片"
     />
-    <v-textarea v-model="textarea" auto-grow clearable outlined label="说点感想吧" />
+    <v-textarea v-model="textarea" class="mt-3" auto-grow outlined label="说点感想吧" />
     <v-btn color="primary" outlined block rounded type="submit" @click="submit">提交</v-btn>
     <p class="mt-6 caption text-center">优秀作品将录入期刊，并获得额外积分</p>
   </div>

@@ -26,7 +26,6 @@ export default {
     confirm: "",
     tab: "login",
   }),
-
   methods: {
     ...mapActions(["Account"]),
     ...mapMutations(["Notify"]),

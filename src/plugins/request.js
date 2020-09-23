@@ -26,10 +26,11 @@ axios.interceptors.response.use(
       store.commit("Notify", { type: "error", message: response.data.message });
       throw response.data;
     } else {
-      store.commit("Notify", {
-        type: "success",
-        message: response.data.message,
-      });
+      if (response.data.message)
+        store.commit("Notify", {
+          type: "success",
+          message: response.data.message,
+        });
       return response.data;
     }
   },

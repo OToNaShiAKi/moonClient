@@ -1,17 +1,17 @@
 <template>
-  <div id="main" class="pt-3">
+  <div id="main" class="pb-9">
     <keep-alive>
       <router-view />
     </keep-alive>
     <v-bottom-navigation
       fixed
-      v-model="nav"
-      hide-on-scroll
+      :value="nav"
       grow
       background-color="accent"
       color="primary"
+      mandatory
     >
-      <v-btn to="/main/home" value="home">
+      <v-btn to="/main/home" value="picture">
         <span>照片墙</span>
         <v-icon>mdi-image-outline</v-icon>
       </v-btn>
@@ -32,9 +32,13 @@
 <script>
 export default {
   name: "Main",
-  data: () => ({
-    nav: "home",
-  }),
+  computed: {
+    nav() {
+      let name = this.$route.name.toLowerCase();
+      if (!["picture", "upload", "me"].includes(name)) return "me";
+      return name;
+    },
+  },
 };
 </script>
 

@@ -1,40 +1,44 @@
 <template>
-  <v-container fluid>
-    <v-row>
-      <v-col v-for="card in cards" :key="card.title">
-        <v-card color="accent" flat>
-          <v-img
-            :src="card.lists[0]"
-            class="white--text align-end"
-            gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-            height="180px"
-          >
-            <v-card-title>{{ $store.state.user.nick }}</v-card-title>
-          </v-img>
+  <v-row>
+    <v-col v-for="(card, id) in cards" :key="id" cols="12" xl="3" lg="4" md="6">
+      <v-card :to="'/detail?key=' + id" color="accent" flat>
+        <v-img
+          :src="'http://hustmaths.top/moon/upload/' + card.lists[0]"
+          class="white--text align-end"
+          height="180px"
+        >
+          <template v-slot:placeholder>
+            <v-row class="fill-height ma-0" align="center" justify="center">
+              <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+            </v-row>
+          </template>
+        </v-img>
 
-          <v-card-actions>
-            <v-spacer />
-            <v-btn color="primary" text>
-              <span class="mr-1">{{card.likes}}</span>
-              <v-icon>mdi-heart-outline</v-icon>
-            </v-btn>
+        <v-card-actions>
+          <div>{{ card.nick }}</div>
+          <v-spacer />
+          <v-btn color="primary" text @click.prevent="LikeAndComment({ id })">
+            <span class="mr-1">{{ card.likes.length }}</span>
+            <v-icon>{{ card.likes.includes(user.id) ? 'mdi-heart' : 'mdi-heart-outline' }}</v-icon>
+          </v-btn>
 
-            <v-btn color="primary" text>
-              <span class="mr-1">{{card.comments}}</span>
-              <v-icon>mdi-comment-outline</v-icon>
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+          <v-btn color="primary" text>
+            <span class="mr-1">{{ card.comments.length }}</span>
+            <v-icon>mdi-comment-outline</v-icon>
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
 export default {
   name: "Fluid",
-  props: {
-    cards: Array,
-  },
+  props: { cards: Object },
+  computed: { ...mapState(["user"]) },
+  methods: { ...mapActions(["LikeAndComment"]) },
 };
 </script>

@@ -6,4 +6,5 @@ export default {
     show: false,
   },
   progress: false,
+  cards: {},
 };

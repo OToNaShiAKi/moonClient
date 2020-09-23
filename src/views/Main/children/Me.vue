@@ -4,7 +4,7 @@
 
     <v-list-item class="mr-9 mb-6">
       <v-list-item-avatar size="60">
-        <v-img src="https://cdn.vuetifyjs.com/images/lists/1.jpg"></v-img>
+        <v-img width="60px" src="@/assets/person.png" />
       </v-list-item-avatar>
 
       <v-list-item-content>
@@ -12,9 +12,9 @@
           <h3>{{ user.nick }}</h3>
         </v-list-item-title>
         <v-list-item-subtitle class="primary--text d-flex flex-wrap justify-space-between">
-          <span>积分：{{ 100 }}</span>
+          <span>排名：{{ user.rank }}</span>
           <v-divider vertical color="#ecc02c" />
-          <span>排名：{{ 10 }}</span>
+          <span>动态：{{ user.pictures }}</span>
         </v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
@@ -34,13 +34,13 @@
     </v-list-item-group>
 
     <section class="pa-6">
-      <v-btn color="primary" block outlined rounded>退出登录</v-btn>
+      <v-btn color="primary" block outlined rounded @click="Logout">退出登录</v-btn>
     </section>
   </v-list>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "Me",
@@ -49,7 +49,7 @@ export default {
       {
         icon: "mdi-account",
         text: "实名认证",
-        path: "/main/real",
+        path: "/main/info",
       },
       {
         icon: "mdi-heart",
@@ -62,6 +62,11 @@ export default {
         path: "/main/work",
       },
       {
+        icon: "mdi-format-list-bulleted",
+        text: "点赞排行",
+        path: "/rank",
+      },
+      {
         icon: "mdi-home",
         text: "招新首页",
         path: "/",
@@ -69,5 +74,8 @@ export default {
     ],
   }),
   computed: { ...mapState(["user"]) },
+  methods: {
+    ...mapActions(["Logout"]),
+  },
 };
 </script>

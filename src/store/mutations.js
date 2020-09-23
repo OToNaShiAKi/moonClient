@@ -3,9 +3,11 @@ const Account = (state, info) => {
 };
 
 const Info = (state, info) => {
-  state.user.name = info.name;
-  state.user.phone = info.phone;
-  state.user.uid = info.uid;
+  const user = state.user;
+  user.name = info.name;
+  user.phone = info.phone;
+  user.uid = info.uid;
+  state.user = { ...user };
 };
 
 const Notify = (state, { type, message = "网络连接失败" }) => {
@@ -21,8 +23,40 @@ const Progress = (state, show) => {
 };
 
 const Upload = (state, files) => {
-  state.files = files;
+  const cards = state.cards;
   console.log(files);
+  state.cards = { [files.id]: files, ...cards };
+  state.user.pictures += 1;
+};
+
+const GetCards = (state, cards) => {
+  state.cards = cards;
+};
+
+const Like = (state, id) => {
+  const cards = state.cards;
+  const user = state.user.id;
+  const index = cards[id].likes.indexOf(user);
+  if (index === -1) cards[id].likes.push(user);
+  else cards[id].likes.splice(index, 1);
+  state.cards = { ...cards };
+};
+
+const Comment = (state, info) => {
+  const cards = state.cards;
+  const { id, nick } = state.user;
+  cards[info.id].comments.push({ id, nick, text: info.text });
+  state.cards = { ...cards };
+};
+
+const Remove = (state, { id, index }) => {
+  const cards = state.cards;
+  if (index >= 0) cards[id].comments.splice(index, 1);
+  else {
+    delete cards[id];
+    state.user.pictures -= 1;
+  }
+  state.cards = { ...cards };
 };
 
 export default {
@@ -31,4 +65,8 @@ export default {
   Progress,
   Info,
   Upload,
+  GetCards,
+  Like,
+  Comment,
+  Remove,
 };

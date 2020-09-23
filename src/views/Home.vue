@@ -1,9 +1,10 @@
 <template>
   <div id="home" class="text-center pa-3 overflow-hidden">
-    <h2 class="mb-3">科协招新活动</h2>
+    <h2>科协招新活动</h2>
+    <p class="caption">活动将于10月1日正式开启</p>
     <v-bottom-sheet v-model="sheet" inset>
       <template v-slot:activator="{ on, attrs }">
-        <v-btn light outlined v-bind="attrs" v-on="on">活动列表</v-btn>
+        <v-btn light outlined :disabled="disable" v-bind="attrs" v-on="on">活动列表</v-btn>
       </template>
       <v-list light>
         <v-subheader>科协招新活动列表</v-subheader>
@@ -53,7 +54,7 @@ export default {
         icon: "mdi-star-four-points",
         color: "#fd8a2f",
         title: "定格风景",
-        text: "用相机记录美的瞬间！",
+        text: "记录华科的最美瞬间！",
         path: "main/home",
       },
       {
@@ -65,7 +66,14 @@ export default {
     ],
     sheet: false,
     overlay: false,
+    disable: true,
   }),
+  created() {
+    const date = new Date().getTime(),
+      line = new Date("2020-10-01 00:00:00").getTime();
+    console.log(line);
+    this.disable = date <= line;
+  },
 };
 </script>
 

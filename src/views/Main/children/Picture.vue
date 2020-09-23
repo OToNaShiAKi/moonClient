@@ -1,28 +1,26 @@
 <template>
-  <div class="pb-12 px-3">
-    <v-img src="@/assets/logo.png" class="mx-16" />
-  </div>
+  <v-container fluid>
+    <v-btn-toggle v-model="text" color="primary" dense mandatory tile group>
+      <v-btn value="fresh" @click="GetCards('fresh')">最新</v-btn>
+      <v-btn value="hot" @click="GetCards('hot')">最热</v-btn>
+    </v-btn-toggle>
+    <fluid :cards="cards" />
+  </v-container>
 </template>
 
 <script>
+import Fluid from "./../../../components/Fluid.vue";
+import { mapState, mapActions } from "vuex";
+
 export default {
   name: "Picture",
-  data: () => ({
-    cards: [
-      {
-        title: "Pre-fab homes",
-        src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
-      },
-      {
-        title: "Favorite road trips",
-        src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
-      },
-      {
-        title: "Best airlines",
-        src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
-      },
-    ],
-  }),
+  data: () => ({ text: "fresh" }),
+  computed: { ...mapState(["cards"]) },
+  components: { Fluid },
+  methods: { ...mapActions(["GetCards"]) },
+  created() {
+    this.GetCards(this.text);
+  },
 };
 </script>
 
