@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Main from "../views/Main/Main.vue";
+import Birth from "../views/Birth/Birth.vue";
 import Picture from "../views/Main/children/Picture.vue";
 
 import store from "../store/";
@@ -28,7 +29,11 @@ const routes = [
     name: "Login",
     component: Login,
   },
-
+  {
+    path: "/birth",
+    name: "Birth",
+    component: Birth,
+  },
   {
     path: "/main",
     name: "Main",
@@ -91,7 +96,7 @@ const Intercept = ["Me", "Upload"];
 router.beforeEach(async (to, from, next) => {
   let user = store.state.user;
   if (!user.id) {
-    user = getItem("user");
+    user = getItem("user") || {};
     if (user.nick && user.password) {
       await store.dispatch("Account", user);
       next();

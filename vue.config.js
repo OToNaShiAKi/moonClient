@@ -1,5 +1,7 @@
+const publicPath = process.env.NODE_ENV === "development" ? "./" : "./moon/";
+
 module.exports = {
-  publicPath: "./",
+  publicPath,
   transpileDependencies: ["vuetify"],
   devServer: {
     proxy: {
