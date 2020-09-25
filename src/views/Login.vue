@@ -4,10 +4,17 @@
       <v-icon>mdi-chevron-left</v-icon>
     </v-btn>
     <section class="mx-9">
-      <v-img width="180px" class="mx-auto mb-6" src="@/assets/smile.png" />
+      <v-img
+        eager
+        width="180px"
+        class="mx-auto mb-6"
+        src="@/assets/smile.png"
+      />
       <v-text-field label="昵称" v-model="nick" />
       <v-text-field label="密码" type="password" v-model="password" />
-      <v-btn rounded block outlined color="primary" @click="login">登录 / 注册</v-btn>
+      <v-btn rounded block outlined color="primary" @click="login"
+        >登录 / 注册</v-btn
+      >
     </section>
 
     <p class="mt-6 caption text-center">本活动与招新小游戏共用账户</p>

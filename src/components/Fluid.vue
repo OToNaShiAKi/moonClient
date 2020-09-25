@@ -3,6 +3,7 @@
     <v-col v-for="(card, id) in cards" :key="id" cols="12" xl="3" lg="4" md="6">
       <v-card :to="'/detail?key=' + id" :ripple="false" color="accent" flat>
         <v-img
+          eager
           :src="'http://hustmaths.top/moon/upload/' + card.lists[0]"
           class="white--text align-end"
           height="180px"

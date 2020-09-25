@@ -44,6 +44,7 @@
       </v-list>
     </v-bottom-sheet>
     <v-img
+      eager
       width="100%"
       max-width="600px"
       class="mx-auto"
@@ -52,7 +53,7 @@
     <p class="caption">感谢新东方对本活动的倾情赞助</p>
 
     <v-overlay :value="overlay">
-      <v-img src="@/assets/wechat.jpg" width="60vw" max-width="240px" />
+      <v-img eager src="@/assets/wechat.jpg" width="60vw" max-width="240px" />
       <p class="caption">微信扫描小程序码报名科协</p>
       <v-btn icon @click="overlay = false">
         <v-icon>mdi-close</v-icon>

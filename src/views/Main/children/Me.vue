@@ -4,7 +4,7 @@
 
     <v-list-item class="mr-9 mb-6">
       <v-list-item-avatar size="60">
-        <v-img width="60px" src="@/assets/person.png" />
+        <v-img eager width="60px" src="@/assets/person.png" />
       </v-list-item-avatar>
 
       <v-list-item-content>

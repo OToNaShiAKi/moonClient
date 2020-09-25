@@ -4,23 +4,44 @@
     <v-container>
       <section class="d-flex mb-3 align-center justify-space-between">
         <section class="d-flex align-center">
-          <v-img width="60px" class="mr-3" style="flex-grow: 0;" src="@/assets/person.png" />
+          <v-img
+            eager
+            width="60px"
+            class="mr-3"
+            style="flex-grow: 0"
+            src="@/assets/person.png"
+          />
           <div class="primary--text">
             <h5 class="text-h5">{{ user.nick }}</h5>
             <div class="caption">{{ card.upTime }}</div>
           </div>
         </section>
-        <v-btn @click="remove" v-if="user.id === card.id" color="primary" icon class="float-right">
+        <v-btn
+          @click="remove"
+          v-if="user.id === card.id"
+          color="primary"
+          icon
+          class="float-right"
+        >
           <v-icon>mdi-delete-outline</v-icon>
         </v-btn>
       </section>
 
-      <v-carousel height="100%" cycle hide-delimiters progress :show-arrows="false">
+      <v-carousel
+        height="100%"
+        cycle
+        hide-delimiters
+        progress
+        :show-arrows="false"
+      >
         <v-carousel-item v-for="(item, i) in card.lists" :key="i">
-          <v-img :src="'http://hustmaths.top/moon/upload/' + item">
+          <v-img eager :src="'http://hustmaths.top/moon/upload/' + item">
             <template v-slot:placeholder>
               <v-row class="fill-height ma-0" align="center" justify="center">
-                <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                <v-progress-circular
+                  indeterminate
+                  color="grey lighten-5"
+                ></v-progress-circular>
               </v-row>
             </template>
           </v-img>
@@ -28,12 +49,18 @@
       </v-carousel>
       <div class="ma-3 d-flex align-center justify-space-between">
         <p class="ma-0">{{ card.text }}</p>
-        <v-btn color="primary" text @click.prevent="LikeAndComment({ id: card._id })">
+        <v-btn
+          color="primary"
+          text
+          @click.prevent="LikeAndComment({ id: card._id })"
+        >
           <span class="mr-1">{{ card.likes.length }}</span>
-          <v-icon>{{ card.likes.includes(user.id) ? 'mdi-heart' : 'mdi-heart-outline' }}</v-icon>
+          <v-icon>{{
+            card.likes.includes(user.id) ? "mdi-heart" : "mdi-heart-outline"
+          }}</v-icon>
         </v-btn>
       </div>
-      <section class="mt-6" style="position: relative;">
+      <section class="mt-6" style="position: relative">
         <v-textarea v-model="text" auto-grow outlined :rows="3" />
         <v-btn
           :disabled="!text.length"
@@ -45,12 +72,19 @@
           color="primary"
           class="mb-4"
           @click="comment"
-        >提交</v-btn>
+          >提交</v-btn
+        >
       </section>
       <div class="mx-3" v-for="(item, index) in card.comments" :key="index">
         <section class="d-flex align-center justify-space-between">
           <section class="d-flex align-center">
-            <v-img width="30px" class="mr-3" style="flex-grow: 0;" src="@/assets/smile.png" />
+            <v-img
+              eager
+              width="30px"
+              class="mr-3"
+              style="flex-grow: 0"
+              src="@/assets/smile.png"
+            />
             <div class="text-subtitle-1">{{ item.nick }}</div>
           </section>
           <v-btn
