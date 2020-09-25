@@ -11,7 +11,7 @@
         :color="item.color"
         :icon="icon[item.icon]"
       >
-        <v-card v-if="!item.show" light>
+        <v-card v-if="item.show" light>
           <v-card-title :class="item.color + '--text'">
             {{ item.name }}
           </v-card-title>
