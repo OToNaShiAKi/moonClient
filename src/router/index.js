@@ -2,7 +2,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Main from "../views/Main/Main.vue";
-import Birth from "../views/Birth/Birth.vue";
 import Picture from "../views/Main/children/Picture.vue";
 
 import store from "../store/";
@@ -15,6 +14,8 @@ const Work = () => import("../views/Main/children/Work.vue");
 const Info = () => import("../views/Main/children/Info.vue");
 const Detail = () => import("../views/Main/Detail.vue");
 const Rank = () => import("../views/Main/Rank.vue");
+const Time = () => import("../views/Birth/Time.vue");
+const Birth = () => import("../views/Birth/Birth.vue");
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: "/birth",
     name: "Birth",
     component: Birth,
+  },
+  {
+    path: "/time",
+    name: "Time",
+    component: Time,
   },
   {
     path: "/main",
@@ -87,9 +93,7 @@ const routes = [
   },
 ];
 
-const router = new VueRouter({
-  routes,
-});
+const router = new VueRouter({ routes });
 
 const Intercept = ["Me", "Upload"];
 

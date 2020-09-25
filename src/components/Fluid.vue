@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col v-for="(card, id) in cards" :key="id" cols="12" xl="3" lg="4" md="6">
-      <v-card :to="'/detail?key=' + id" color="accent" flat>
+      <v-card :to="'/detail?key=' + id" :ripple="false" color="accent" flat>
         <v-img
           :src="'http://hustmaths.top/moon/upload/' + card.lists[0]"
           class="white--text align-end"
@@ -9,7 +9,7 @@
         >
           <template v-slot:placeholder>
             <v-row class="fill-height ma-0" align="center" justify="center">
-              <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+              <v-progress-circular indeterminate color="grey lighten-5" />
             </v-row>
           </template>
         </v-img>
@@ -19,7 +19,11 @@
           <v-spacer />
           <v-btn color="primary" text @click.prevent="LikeAndComment({ id })">
             <span class="mr-1">{{ card.likes.length }}</span>
-            <v-icon>{{ card.likes.includes(user.id) ? 'mdi-heart' : 'mdi-heart-outline' }}</v-icon>
+            <v-icon>
+              {{
+                card.likes.includes(user.id) ? "mdi-heart" : "mdi-heart-outline"
+              }}
+            </v-icon>
           </v-btn>
 
           <v-btn color="primary" text>

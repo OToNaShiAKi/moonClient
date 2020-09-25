@@ -6,7 +6,7 @@
         class="ma-1"
         :value="(item / progress[i].division) * 100"
         :color="progress[i].color"
-        size="60"
+        size="70"
         :key="i"
         rotate="-90"
       >
@@ -23,7 +23,7 @@
       </template>
       <v-list light>
         <v-subheader>科协招新活动列表</v-subheader>
-        <v-list-item :to="tile.path" v-for="tile in tiles" :key="tile.icon">
+        <v-list-item :href="tile.path" v-for="tile in tiles" :key="tile.icon">
           <v-list-item-icon>
             <v-icon :color="tile.color">{{ tile.icon }}</v-icon>
           </v-list-item-icon>
@@ -43,7 +43,12 @@
         </v-list-item>
       </v-list>
     </v-bottom-sheet>
-    <v-img max-width="100vw" max-height="100%" src="@/assets/back.jpg" />
+    <v-img
+      width="100%"
+      max-width="600px"
+      class="mx-auto"
+      src="@/assets/back.jpg"
+    />
     <p class="caption">感谢新东方对本活动的倾情赞助</p>
 
     <v-overlay :value="overlay">
@@ -75,22 +80,23 @@ export default {
       {
         icon: "mdi-gamepad",
         color: "#3e99f6",
-        title: "招新小游戏",
+        title: "记忆月饼",
         text: "玩小游戏，赢大礼品！",
+        path: "http://hustmaths.top/mooncake",
       },
       {
         icon: "mdi-star-four-points",
         color: "#fd8a2f",
         title: "定格风景",
         text: "记录华科的最美瞬间！",
-        path: "/main/home",
+        path: "#/main/home",
       },
       {
         icon: "mdi-cake-layered",
         color: "#ef4971",
         title: "作坊生日会",
         text: "与科同喜，共吃蛋糕！",
-        path: "/birth",
+        path: "#/birth",
       },
     ],
     sheet: false,
@@ -106,8 +112,8 @@ export default {
     ],
   }),
   created() {
-    const date = new Date().getTime(),
-      start = new Date("2020-10-01 13:34:00").getTime(),
+    const date = Date.now(),
+      start = new Date("2020-10-01 00:00:00").getTime(),
       end = new Date("2020-10-08 00:00:00").getTime();
     if (date < start) {
       this.text = "活动倒计时";
