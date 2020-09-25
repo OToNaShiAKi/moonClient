@@ -120,9 +120,9 @@ export default {
       this.text = "活动倒计时";
       let time = CountDown(start - date);
       this.time = time;
-      const timer = setInterval(() => {
+      this.timer = setInterval(() => {
         if (time[0] <= 0 && time[1] <= 0 && time[2] <= 0 && time[3] <= 0) {
-          clearInterval(timer);
+          clearInterval(this.timer);
           this.disable = false;
           this.text = "活动时间：10月1日0点 - 10月8日24点";
           this.time = false;
@@ -133,6 +133,9 @@ export default {
     } else if (date > end) this.text = "活动已结束";
     else this.text = "活动时间：10月1日0点 - 10月8日24点";
     this.disable = date < start || date > end;
+  },
+  beforeDestroy() {
+    if (this.timer) clearInterval(this.timer);
   },
 };
 </script>

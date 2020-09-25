@@ -18,7 +18,7 @@
         v-for="item in depart"
         :key="item.date"
         :color="item.color"
-        :icon="icon[item.icon]"
+        :icon="item.icon"
       >
         <v-card v-if="item.show" light>
           <v-card-title :class="item.color + '--text'">
@@ -66,26 +66,25 @@ export default {
         birth: "原型图的“美感”，是设计狮的伤痛。",
       },
     ],
-    icon: {
-      2: "mdi-camera-timer",
-      1: "mdi-checkbox-marked-circle-outline",
-      0: "mdi-minus-circle-outline",
-    },
   }),
   created() {
     const now = Date.now();
     const { onecho, media, office } = this.$store.state.user;
 
-    this.depart[0].icon = onecho;
-    this.depart[1].icon = media;
-    this.depart[2].icon = office;
+    const icon = {
+      true: "mdi-checkbox-marked-circle-outline",
+      false: "mdi-minus-circle-outline",
+    };
+    this.depart[0].icon = icon[onecho];
+    this.depart[1].icon = icon[media];
+    this.depart[2].icon = icon[office];
 
     for (let item of this.depart) {
       let line = new Date("2020-" + item.date);
       line.setHours(0);
       line = line.getTime();
       item.show = line < now;
-      if (line > now) item.icon = 2;
+      if (line > now) item.icon = "mdi-minus-circle-outline";
     }
   },
 };
