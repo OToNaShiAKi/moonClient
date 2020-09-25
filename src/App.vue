@@ -37,14 +37,14 @@ export default {
 @media screen and (max-width: 1200px) {
   .birth {
     min-height: 100vh;
-    background: url("../../assets/birth.jpg") center / cover no-repeat fixed;
+    background: url("./assets/birth.jpg") center / cover no-repeat fixed;
   }
 }
 
 @media screen and (min-width: 1200px) {
   .birth {
     min-height: 100vh;
-    background: url("../../assets/birth.jpg") center / contain no-repeat fixed;
+    background: url("./assets/birth.jpg") center / contain no-repeat fixed;
   }
 }
 </style>

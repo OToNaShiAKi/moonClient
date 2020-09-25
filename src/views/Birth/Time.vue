@@ -1,7 +1,8 @@
 <template>
   <div class="pr-6 birth">
-    <h4 class="pa-6 primary--text">成就挑战：</h4>
-    <v-timeline dense class="text-left">
+    <back />
+    <v-timeline dense class="text-left pt-0">
+      <v-subheader class="primary--text">成就挑战：</v-subheader>
       <v-timeline-item
         fill-dot
         small
@@ -19,12 +20,14 @@
         </v-card>
         <div v-else>此主题将于 {{ item.date }} 开启</div>
       </v-timeline-item>
+      <div class="caption text-center">照片成就审核会有一定程度延迟</div>
     </v-timeline>
-    <div class="caption text-center">照片成就审核会有一定程度延迟</div>
   </div>
 </template>
 
 <script>
+import Back from "./../../components/Back.vue";
+
 export default {
   name: "Time",
   data: () => ({
@@ -42,7 +45,7 @@ export default {
         date: "10-06",
         achieve: "定格风景：在科技楼中拍摄卷起来的傅里叶（快展开啊喂）。",
         color: "error",
-        birth: "",
+        birth: "辣眼，又何尝不是一种宣传。",
       },
       {
         name: "策划",
@@ -75,13 +78,14 @@ export default {
       if (line > now) item.icon = 2;
     }
   },
+  components: { Back },
 };
 </script>
 
 <style lang="less" scoped>
 .birth::before {
   content: "";
-  display: block;
+  position: absolute;
   width: 100%;
   height: 100%;
   background-color: #000000af;
