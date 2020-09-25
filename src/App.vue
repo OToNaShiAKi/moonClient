@@ -13,8 +13,9 @@
       v-model="notify.show"
       top
       dark
-      >{{ notify.message }}</v-snackbar
     >
+      {{ notify.message }}
+    </v-snackbar>
   </v-app>
 </template>
 

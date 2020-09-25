@@ -1,7 +1,16 @@
 <template>
-  <div class="pr-6 birth">
-    <back />
-    <v-timeline dense class="text-left pt-0">
+  <div class="pt-3 text-center birth" :class="overlay ? 'overlay' : ''">
+    <v-btn
+      v-show="!overlay"
+      depressed
+      rounded
+      color="warning"
+      small
+      @click="overlay = true"
+    >
+      庆生主题成就
+    </v-btn>
+    <v-timeline v-show="overlay" dense class="text-left pt-0 mr-6">
       <v-subheader class="primary--text">成就挑战：</v-subheader>
       <v-timeline-item
         fill-dot
@@ -11,7 +20,7 @@
         :color="item.color"
         :icon="icon[item.icon]"
       >
-        <v-card v-if="item.show" light>
+        <v-card v-if="!item.show" light>
           <v-card-title :class="item.color + '--text'">
             {{ item.name }}
           </v-card-title>
@@ -22,16 +31,17 @@
       </v-timeline-item>
       <div class="caption text-center">照片成就审核会有一定程度延迟</div>
     </v-timeline>
+    <v-btn icon v-show="overlay" @click="overlay = false">
+      <v-icon small>mdi-close</v-icon>
+    </v-btn>
   </div>
 </template>
 
 <script>
-import Back from "./../../components/Back.vue";
-
 export default {
   name: "Time",
   data: () => ({
-    overlay: true,
+    overlay: false,
     depart: [
       {
         name: "One Echo",
@@ -78,14 +88,15 @@ export default {
       if (line > now) item.icon = 2;
     }
   },
-  components: { Back },
 };
 </script>
 
 <style lang="less" scoped>
-.birth::before {
+.overlay::before {
   content: "";
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background-color: #000000af;

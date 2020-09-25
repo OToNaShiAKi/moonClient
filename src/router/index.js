@@ -14,8 +14,7 @@ const Work = () => import("../views/Main/children/Work.vue");
 const Info = () => import("../views/Main/children/Info.vue");
 const Detail = () => import("../views/Main/Detail.vue");
 const Rank = () => import("../views/Main/Rank.vue");
-const Time = () => import("../views/Birth/Time.vue");
-const Birth = () => import("../views/Birth/Birth.vue");
+const Birth = () => import("../views/Birth.vue");
 
 Vue.use(VueRouter);
 
@@ -35,11 +34,7 @@ const routes = [
     name: "Birth",
     component: Birth,
   },
-  {
-    path: "/time",
-    name: "Time",
-    component: Time,
-  },
+
   {
     path: "/main",
     name: "Main",
