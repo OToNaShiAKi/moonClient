@@ -12,7 +12,7 @@
             src="@/assets/person.png"
           />
           <div class="primary--text">
-            <h5 class="text-h5">{{ user.nick }}</h5>
+            <h5 class="text-h5">{{ card.nick }}</h5>
             <div class="caption">{{ card.upTime }}</div>
           </div>
         </section>
