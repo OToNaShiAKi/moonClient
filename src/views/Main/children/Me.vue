@@ -78,8 +78,6 @@ export default {
     ],
   }),
   computed: { ...mapState(["user"]) },
-  methods: {
-    ...mapActions(["Logout"]),
-  },
+  methods: { ...mapActions(["Logout"]) },
 };
 </script>

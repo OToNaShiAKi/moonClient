@@ -4,8 +4,8 @@ import Home from "../views/Home.vue";
 import Main from "../views/Main/Main.vue";
 import Picture from "../views/Main/children/Picture.vue";
 
-import store from "../store/";
-import { getItem } from "./../plugins/storage";
+// import store from "../store/";
+// import { getItem } from "./../plugins/storage";
 
 const Login = () => import("../views/Login.vue");
 const Me = () => import("../views/Main/children/Me.vue");
@@ -90,7 +90,7 @@ const routes = [
 
 const router = new VueRouter({ routes });
 
-const Intercept = ["Me", "Upload", "Work", "Info", "Like"];
+/* const Intercept = ["Me", "Upload", "Work", "Info", "Like"];
 
 router.beforeEach(async (to, from, next) => {
   let user = store.state.user;
@@ -104,6 +104,6 @@ router.beforeEach(async (to, from, next) => {
   }
   if (user.id || !Intercept.includes(to.name)) next();
   else next("/login");
-});
+}); */
 
 export default router;

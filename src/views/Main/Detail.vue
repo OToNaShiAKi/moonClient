@@ -148,7 +148,6 @@ export default {
       this.index = index;
     },
     confirm() {
-      console.log(this.index >= 0);
       this.Remove({ id: this.card._id, index: this.index });
       this.dialog = false;
       this.index = null;

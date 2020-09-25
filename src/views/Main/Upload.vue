@@ -37,6 +37,8 @@
 import { mapActions, mapMutations } from "vuex";
 import Back from "./../../components/Back.vue";
 
+const FileRule = /^image\//;
+
 export default {
   name: "Upload",
   data: () => ({ textarea: "" }),
@@ -49,6 +51,12 @@ export default {
       if (!files.length) {
         this.Notify({ type: "warning", message: "请至少上传一张图片" });
         return;
+      }
+      for (let file of files) {
+        if (!FileRule.test(file.name)) {
+          this.Notify({ type: "warning", message: "请勿上传非图片文件" });
+          return;
+        }
       }
       const formdata = new FormData();
       for (let file of files) {
