@@ -11,7 +11,7 @@
       庆生主题成就
     </v-btn>
     <v-timeline v-show="overlay" dense class="text-left pt-0 mr-6">
-      <v-subheader class="primary--text">成就挑战：</v-subheader>
+      <v-subheader class="primary--text">挑战成就，赢取积分：</v-subheader>
       <v-timeline-item
         fill-dot
         small
@@ -20,7 +20,7 @@
         :color="item.color"
         :icon="icon[item.icon]"
       >
-        <v-card v-if="!item.show" light>
+        <v-card v-if="item.show" light>
           <v-card-title :class="item.color + '--text'">
             {{ item.name }}
           </v-card-title>
@@ -45,21 +45,21 @@ export default {
     depart: [
       {
         name: "One Echo",
-        date: "10-05",
+        date: "10-02",
         achieve: "记忆月饼：3s内通过一场考试。",
         color: "success",
         birth: "设计去掉的每一项动效，都是开发追着砍出来的。",
       },
       {
         name: "媒体",
-        date: "10-06",
+        date: "10-03",
         achieve: "定格风景：在科技楼中拍摄卷起来的傅里叶（快展开啊喂）。",
         color: "error",
         birth: "辣眼，又何尝不是一种宣传。",
       },
       {
         name: "策划",
-        date: "10-07",
+        date: "10-04",
         achieve:
           "记忆月饼：进行一局游戏且得分包含数字4；定格风景：拍摄华科经典雕塑——四年顶个球。",
         color: "primary",

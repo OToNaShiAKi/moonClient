@@ -94,7 +94,7 @@ export default {
       {
         icon: "mdi-cake-layered",
         color: "#ef4971",
-        title: "作坊生日会",
+        title: "作坊生日宴",
         text: "与科同喜，共吃蛋糕！",
         path: "#/birth",
       },

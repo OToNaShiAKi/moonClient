@@ -1,17 +1,20 @@
 <template>
   <v-container>
     <back />
-    <fluid :cards="cards" />
+    <fluid v-if="JSON.stringify(cards) !== '{}'" :cards="cards" />
+    <empty v-else text="还没有任何作品哦" />
   </v-container>
 </template>
 
 <script>
 import Fluid from "./../../../components/Fluid.vue";
 import Back from "./../../../components/Back.vue";
+import Empty from "./../../../components/Empty.vue";
 
 export default {
   name: "Work",
-  components: { Fluid, Back },
+  components: { Fluid, Back, Empty },
+  data: () => ({ text: "" }),
   computed: {
     cards() {
       const cards = {};
@@ -24,7 +27,6 @@ export default {
         for (let key in all)
           if (all[key].likes.includes(id)) cards[key] = all[key];
       }
-
       return cards;
     },
   },

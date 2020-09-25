@@ -1,6 +1,5 @@
 <template>
   <div>
-    <back />
     <v-simple-table fixed-header>
       <template v-slot:default>
         <thead>
@@ -19,15 +18,15 @@
         </tbody>
       </template>
     </v-simple-table>
+    <div class="caption pa-3">
+      排行榜按照个人最高赞数排行，排行越高，结算时积分越高。
+    </div>
   </div>
 </template>
 
 <script>
-import Back from "./../../components/Back.vue";
-
 export default {
   name: "Rank",
-  components: { Back },
   computed: {
     rank() {
       let rank = [];

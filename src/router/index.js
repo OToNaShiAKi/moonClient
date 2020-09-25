@@ -9,11 +9,11 @@ import { getItem } from "./../plugins/storage";
 
 const Login = () => import("../views/Login.vue");
 const Me = () => import("../views/Main/children/Me.vue");
-const Upload = () => import("../views/Main/children/Upload.vue");
+const Upload = () => import("../views/Main/Upload.vue");
 const Work = () => import("../views/Main/children/Work.vue");
 const Info = () => import("../views/Main/children/Info.vue");
 const Detail = () => import("../views/Main/Detail.vue");
-const Rank = () => import("../views/Main/Rank.vue");
+const Rank = () => import("../views/Main/children/Rank.vue");
 const Birth = () => import("../views/Birth.vue");
 
 Vue.use(VueRouter);
@@ -51,9 +51,9 @@ const routes = [
         component: Me,
       },
       {
-        path: "upload",
-        name: "Upload",
-        component: Upload,
+        path: "rank",
+        name: "Rank",
+        component: Rank,
       },
       {
         path: "work",
@@ -73,9 +73,9 @@ const routes = [
     ],
   },
   {
-    path: "/rank",
-    name: "Rank",
-    component: Rank,
+    path: "/upload",
+    name: "Upload",
+    component: Upload,
   },
   {
     path: "/detail",
@@ -90,7 +90,7 @@ const routes = [
 
 const router = new VueRouter({ routes });
 
-const Intercept = ["Me", "Upload"];
+const Intercept = ["Me", "Upload", "Work", "Info", "Like"];
 
 router.beforeEach(async (to, from, next) => {
   let user = store.state.user;

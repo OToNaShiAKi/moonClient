@@ -24,7 +24,6 @@ const Progress = (state, show) => {
 
 const Upload = (state, files) => {
   const cards = state.cards;
-  console.log(files);
   state.cards = { [files.id]: files, ...cards };
   state.user.pictures += 1;
 };

@@ -11,7 +11,9 @@
         <v-list-item-title class="primary--text mb-2">
           <h3>{{ user.nick }}</h3>
         </v-list-item-title>
-        <v-list-item-subtitle class="primary--text d-flex flex-wrap justify-space-between">
+        <v-list-item-subtitle
+          class="primary--text d-flex flex-wrap justify-space-between"
+        >
           <span>排名：{{ user.rank }}</span>
           <v-divider vertical color="#ecc02c" />
           <span>动态：{{ user.pictures }}</span>
@@ -34,7 +36,9 @@
     </v-list-item-group>
 
     <section class="pa-6">
-      <v-btn color="primary" block outlined rounded @click="Logout">退出登录</v-btn>
+      <v-btn color="primary" block outlined rounded @click="Logout">
+        退出登录
+      </v-btn>
     </section>
   </v-list>
 </template>
@@ -62,9 +66,9 @@ export default {
         path: "/main/work",
       },
       {
-        icon: "mdi-format-list-bulleted",
-        text: "点赞排行",
-        path: "/rank",
+        icon: "mdi-cloud-upload",
+        text: "发布动态",
+        path: "/upload",
       },
       {
         icon: "mdi-home",

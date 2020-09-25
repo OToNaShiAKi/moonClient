@@ -16,9 +16,9 @@
         <v-icon>mdi-image-outline</v-icon>
       </v-btn>
 
-      <v-btn to="/main/upload" value="upload">
-        <span>发布</span>
-        <v-icon>mdi-cloud-upload-outline</v-icon>
+      <v-btn to="/main/rank" value="rank">
+        <span>排行榜</span>
+        <v-icon>mdi-format-list-bulleted</v-icon>
       </v-btn>
 
       <v-btn to="/main/me" value="me">
@@ -35,7 +35,7 @@ export default {
   computed: {
     nav() {
       let name = this.$route.name.toLowerCase();
-      if (!["picture", "upload", "me"].includes(name)) return "me";
+      if (!["picture", "rank", "me"].includes(name)) return "me";
       return name;
     },
   },
