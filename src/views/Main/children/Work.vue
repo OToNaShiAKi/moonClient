@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <back />
     <fluid v-if="JSON.stringify(cards) !== '{}'" :cards="cards" />
     <empty v-else text="还没有任何作品哦" />

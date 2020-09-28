@@ -46,7 +46,7 @@ export default {
       {
         name: "One Echo",
         date: "10-02",
-        achieve: "记忆月饼：3s内通过一场考试。",
+        achieve: "记忆月饼：一局游戏内扔掉300本书。",
         color: "success",
         birth: "设计去掉的每一项动效，都是开发追着砍出来的。",
       },

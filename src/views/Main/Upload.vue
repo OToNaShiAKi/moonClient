@@ -53,7 +53,7 @@ export default {
         return;
       }
       for (let file of files) {
-        if (!FileRule.test(file.name)) {
+        if (!FileRule.test(file.type)) {
           this.Notify({ type: "warning", message: "请勿上传非图片文件" });
           return;
         }

@@ -72,8 +72,9 @@
           color="primary"
           class="mb-4"
           @click="comment"
-          >提交</v-btn
         >
+          提交
+        </v-btn>
       </section>
       <div class="mx-3" v-for="(item, index) in card.comments" :key="index">
         <section class="d-flex align-center justify-space-between">
